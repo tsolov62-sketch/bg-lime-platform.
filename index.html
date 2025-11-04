@@ -1,23 +1,177 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BG-Lime Platform</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BG‑Lime Platform</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #80c904, #2b7a0b);
-      color: white;
-      text-align: center;
-      padding-top: 100px;
+    :root{
+      --lime-1:#c7f06b;
+      --lime-2:#80c904;
+      --lime-3:#2b7a0b;
+      --dark:#0b0b0b;
+      --muted: rgba(255,255,255,0.85);
+      --card: rgba(255,255,255,0.06);
+      --glass: rgba(255,255,255,0.06);
+      --radius:16px;
+      --max-width:1100px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     }
-    h1 { font-size: 2.5em; }
-    p { font-size: 1.2em; opacity: 0.9; }
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;background:linear-gradient(135deg,var(--lime-1),var(--lime-2));color:var(--dark);}
+    .wrap{max-width:var(--max-width);margin:0 auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:48px;height:48px;border-radius:8px;background:linear-gradient(135deg,var(--lime-2),var(--lime-3));display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    nav a{margin-left:18px;color:var(--dark);text-decoration:none;font-weight:600}
+    .lang-toggle{border:0;background:transparent;font-weight:600;cursor:pointer}
+
+    .hero{display:flex;gap:32px;align-items:center;padding:36px 0}
+    .hero-left{flex:1}
+    .kicker{background:rgba(255,255,255,0.12);display:inline-block;padding:6px 10px;border-radius:999px;font-weight:700;color:var(--dark);margin-bottom:14px}
+    h1{font-size:40px;margin:0 0 12px}
+    p.lead{margin:0 0 20px;color:#052400;opacity:0.95;font-size:18px}
+    .cta{display:inline-flex;gap:12px;align-items:center}
+    .btn{padding:12px 18px;border-radius:12px;border:0;font-weight:700;cursor:pointer}
+    .btn-primary{background:var(--dark);color:white}
+    .btn-outline{background:transparent;border:2px solid rgba(11,11,11,0.08);color:var(--dark)}
+
+    .hero-right{width:420px;min-height:220px;background:var(--glass);border-radius:16px;padding:16px;color:white;backdrop-filter: blur(6px)}
+    .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+    .card{background:rgba(255,255,255,0.95);padding:18px;border-radius:12px;color:var(--dark);box-shadow:0 6px 18px rgba(0,0,0,0.08)}
+
+    section.features{margin-top:20px}
+    .two-col{display:grid;grid-template-columns:1fr 380px;gap:24px}
+    footer{padding:28px 0;color:#042400}
+
+    /* responsive */
+    @media (max-width:900px){
+      .hero{flex-direction:column}
+      .hero-right{width:100%}
+      .two-col{grid-template-columns:1fr}
+      .feature-grid{grid-template-columns:repeat(2,1fr)}
+      h1{font-size:28px}
+    }
+
+    /* language hidden blocks */
+    [lang="bg"]{display:block}
+    [lang="en"]{display:none}
+    .show-en [lang="bg"]{display:none}
+    .show-en [lang="en"]{display:block}
+
   </style>
 </head>
 <body>
-  <h1>Добре дошли в BG-Lime Platform!</h1>
-  <p>Платформата е в процес на разработка...</p>
+  <div class="wrap" id="app">
+    <header>
+      <div class="brand">
+        <div class="logo">BG</div>
+        <div>
+          <div style="font-weight:800">BG‑Lime</div>
+          <div style="font-size:12px;color:rgba(0,0,0,0.6)">Watch. Complete. Earn.</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#">Начало</a>
+        <a href="#features">Как работи</a>
+        <a href="#packages">Пакети</a>
+        <a href="#contact">Контакт</a>
+        <button class="lang-toggle" id="langBtn">EN</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-left">
+          <div class="kicker">Нов</div>
+          <h1>
+            <span lang="bg">Гледай видеа, решавай задачи и печели</span>
+            <span lang="en">Watch videos, complete tasks, earn rewards</span>
+          </h1>
+          <p class="lead">
+            <span lang="bg">Купи пакет задачи и печели кредити след успешно преминаване на кратък quiz. Легално и прозрачно.</span>
+            <span lang="en">Buy a task package and earn credits after passing short quizzes. Legal and transparent.</span>
+          </p>
+
+          <div class="cta">
+            <button class="btn btn-primary"> <span lang="bg">Започни</span><span lang="en">Get started</span></button>
+            <button class="btn btn-outline"> <span lang="bg">Научи повече</span><span lang="en">Learn more</span></button>
+          </div>
+
+          <div class="feature-grid" style="margin-top:24px">
+            <div class="card"><strong>BG</strong><div style="font-size:13px;color:#556">Валидна верификация</div></div>
+            <div class="card"><strong>EN</strong><div style="font-size:13px;color:#556">Anti‑fraud checks</div></div>
+            <div class="card"><strong>€</strong><div style="font-size:13px;color:#556">Прозрачни изплащания</div></div>
+          </div>
+        </div>
+
+        <aside class="hero-right">
+          <div style="font-weight:800;margin-bottom:8px">Текущи задачи</div>
+          <div style="font-size:13px;opacity:0.9;margin-bottom:8px">10 активни задачи · среден доход: €0.45/задача</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.05);padding:8px;border-radius:8px"><div>Клип: „5 начина да..."</div><div style="font-weight:700">+€0.30</div></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.03);padding:8px;border-radius:8px"><div>Клип: „Как да..."</div><div style="font-weight:700">+€0.50</div></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.03);padding:8px;border-radius:8px"><div>Клип: „Топ 10..."</div><div style="font-weight:700">+€0.40</div></div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="features" class="features">
+        <div class="two-col">
+          <div>
+            <h2><span lang="bg">Как работи</span><span lang="en">How it works</span></h2>
+            <ol>
+              <li><strong>Купи пакет</strong> — получаваш X задачи.</li>
+              <li><strong>Гледай видеото</strong> — вграденият player засича гледане.</li>
+              <li><strong>Попълни quiz</strong> — минимален процент за валидност.</li>
+              <li><strong>Получаваш кредит</strong> — баланса ти се увеличава.</li>
+            </ol>
+          </div>
+
+          <aside class="card">
+            <h3>Пакети</h3>
+            <div style="margin:8px 0"><strong>Starter</strong> €9.99 — 10 задачи (≈€0.30/задача)</div>
+            <div style="margin:8px 0"><strong>Pro</strong> €29.99 — 40 задачи (≈€0.60/задача)</div>
+            <div style="margin:8px 0"><strong>Business</strong> €79.99 — 120 задачи (≈€1.00/задача)</div>
+            <div style="margin-top:8px;font-size:13px;color:#556">Минимален праг за изплащане: €20</div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="packages" style="margin-top:26px">
+        <h2><span lang="bg">Избрани пакети</span><span lang="en">Selected plans</span></h2>
+        <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+          <div class="card" style="flex:1;min-width:220px"><strong>Starter</strong><div>€9.99 · 10 tasks</div></div>
+          <div class="card" style="flex:1;min-width:220px"><strong>Pro</strong><div>€29.99 · 40 tasks</div></div>
+          <div class="card" style="flex:1;min-width:220px"><strong>Business</strong><div>€79.99 · 120 tasks</div></div>
+        </div>
+      </section>
+
+      <section id="contact" style="margin-top:36px">
+        <h3><span lang="bg">Свържете се с нас</span><span lang="en">Contact us</span></h3>
+        <p style="margin:8px 0">support@bg-lime.eu</p>
+      </section>
+
+    </main>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div>© BG‑Lime 2025</div>
+        <div style="font-size:13px;color:#042400;">Terms · Privacy</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const langBtn = document.getElementById('langBtn');
+    const app = document.getElementById('app');
+    let en = false;
+    langBtn.addEventListener('click', ()=>{
+      en = !en;
+      if(en){document.documentElement.classList.add('show-en');langBtn.textContent='BG'}
+      else {document.documentElement.classList.remove('show-en');langBtn.textContent='EN'}
+    });
+  </script>
 </body>
 </html>
